@@ -1,0 +1,35 @@
+%h1 Listing verbs
+
+%table.table
+  %tr
+    %th Name
+    %th Is Active
+    %th Sort Order
+    %th Hide object
+    %th Hide price
+    %th Hide url
+    %th Hide people
+    %th Object Label
+    %th Object Example
+    %th
+    %th
+    %th
+
+  - @verbs.each do |verb|
+    %tr
+      %td= verb.name
+      %td= verb.is_active
+      %td= verb.sort_order      
+      %td= verb.hide_object
+      %td= verb.hide_price
+      %td= verb.hide_url
+      %td= verb.object_label
+      %td= verb.object_example
+      %td= verb.hide_people
+      %td= link_to 'Show', verb
+      %td= link_to 'Edit', edit_verb_path(verb)
+      %td= link_to 'x', verb, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Action', new_verb_path

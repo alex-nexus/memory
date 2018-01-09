@@ -1,0 +1,39 @@
+= simple_form_for @line, :defaults => { :input_html => { :class => 'span2' } } do |f|
+  - if @line.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@line.errors.count, "error")} prohibited this line from being saved:"
+      %ul
+        - @line.errors.full_messages.each do |msg|
+          %li= msg
+  .row
+    .field.span1
+      %h2 I
+    .field.span2.field_verb
+      = f.association :verb, :collection => Verb.active.sorted, :value_method => :id, 
+      :label => 'Verb', :include_blank => false         
+    .field.span2.field_object
+      = f.input :object, :placeholder => 'e.g. Apple'
+    .field.span2.field_people
+      = f.input :people, :placeholder => 'e.g. John', :label => 'With'      
+    .field.span2.field_start_time
+      = f.input :start_time, :as => :string, :label => 'Time',
+        :input_html => {:class => 'input_date_picker span2', 'data-date' => DateTime.new.to_date.to_s, :value => DateTime.now.strftime("%Y-%m-%d")}
+    .field.span2.field_place
+      = f.input :place, :placeholder => 'e.g. Civic Center', :label => '@'                       
+  .row.field_detail.hide
+    .field.span2.field_price
+      = f.input :price, :placeholder => 'Price'
+    .field.span2.field_photo
+      = f.input :photo, :placeholder => 'Photo'  
+    .field.span2.field_url
+      = f.input :url, :placeholder => 'URL'
+    .field.span4.field_note
+      = f.input :note, :as => :text, :input_html => {:class => 'span4', :rows=>1}
+  .row 
+    .verbs.span1
+      %button.btn.btn-info More
+      %button.btn.btn-info.hide Less
+    .verbs.span1
+      = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+      = f.submit 'Save', :class => 'btn btn-primary'
+            

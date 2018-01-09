@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b People:
+  = @line.people
+%p
+  %b Action:
+  = @line.verb.name
+%p
+  %b Object:
+  = @line.object
+%p
+  %b Place:
+  = @line.place
+%p
+  %b Start Time:
+  = @line.start_time
+%p
+  %b Price:
+  = @line.price
+%p
+  %b Photo:
+  = @line.photo
+%p
+  %b Url:
+  = @line.url
+%p
+  %b Note:
+  = @line.note
+
+= link_to 'Edit', edit_line_path(@line)
+\|
+= link_to 'Back', lines_path

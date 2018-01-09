@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @verb.name
+%p
+  %b Hide object:
+  = @verb.hide_object
+%p
+  %b Hide price:
+  = @verb.hide_price
+%p
+  %b Hide url:
+  = @verb.hide_url
+%p
+  %b Hide people:
+  = @verb.hide_people
+
+= link_to 'Edit', edit_verb_path(@verb)
+\|
+= link_to 'Back', verbs_path

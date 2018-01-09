@@ -1,0 +1,14 @@
+= simple_form_for(@verb) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :hide_object
+    = f.input :hide_price
+    = f.input :hide_url
+    = f.input :hide_people
+    = f.input :is_active
+    = f.input :sort_order
+    
+  .form-verbs
+    = f.button :submit

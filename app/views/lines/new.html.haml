@@ -1,0 +1,14 @@
+%h2 Record your Journey, one action at a time 
+
+= render 'form'
+
+-unless @lines.nil?
+  %table.table.table-hover
+    - @lines.each do |line|
+      %tr
+        %td
+          .line_editable= line.sentence
+          .add_this.hide= render 'layouts/add_this_small'           
+        %td= link_to 'x', line, method: :delete, data: { confirm: 'Are you sure?' }
+          
+= paginate @lines

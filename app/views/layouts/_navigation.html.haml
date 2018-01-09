@@ -1,0 +1,44 @@
+%header.navbar.navbar-fixed-top.navbar-inverse
+  %nav.navbar-inner
+    .container
+      = link_to "iRemember", root_path, :class => 'brand'
+      %ul.nav.nav-pills.pull-left
+        %li.dropdown
+          %a.dropdown-toggle{'data-toggle' => "dropdown", :href=>"#"} Body<b class="caret"></b>
+          %ul.dropdown-menu
+            %li= link_to 'iAte', lines_path(:verb_id => 1)
+            %li= link_to 'iMet', lines_path(:verb_id => 4)
+            %li= link_to 'iRead', lines_path(:verb_id => 10)
+            %li= link_to 'iVisited', lines_path(:verb_id => 6)
+            %li= link_to 'iAttended', lines_path(:verb_id => 7)
+            %li= link_to 'iWore', lines_path(:verb_id => 8)            
+        %li.dropdown
+          %a.dropdown-toggle{'data-toggle' => "dropdown", :href=>"#"} Thing<b class="caret"></b>                         
+          %ul.dropdown-menu
+            %li= link_to 'iBought', lines_path(:verb_id => 2)
+            %li= link_to 'iHave', lines_path(:verb_id => 3)
+            %li= link_to 'iSpend', lines_path
+        %li.dropdown
+          %a.dropdown-toggle{'data-toggle' => "dropdown", :href=>"#"} Mind<b class="caret"></b>                         
+          %ul.dropdown-menu
+            %li= link_to 'iComment', lines_path
+            %li= link_to 'iDream', lines_path                                       
+            %li= link_to 'iRecall', lines_path
+            %li= link_to 'iReview', lines_path            
+      %ul.nav.nav-pills.pull-right
+        %form.navbar-search
+          %input.search-query{:type=>"text", :placeholder=>"Search"}
+        %li.dropdown
+          %a.dropdown-toggle{'data-toggle' => "dropdown", :href=>"#"} Alex Chen<b class="caret"></b>
+          %ul.dropdown-menu
+            %li= link_to "About", page_path("about")
+            %li= link_to 'Score', score_path
+            -if user_signed_in?
+              %li= link_to 'Edit account', edit_user_registration_path
+              -if current_user.has_role? :admin
+                %li= link_to 'Admin', users_path
+
+            -if user_signed_in?
+              %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
+            -else
+              %li= link_to 'Login', new_user_session_path						
